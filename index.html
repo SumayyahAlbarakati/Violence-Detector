@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+  <title>Violence Detector</title>
+  <style>
+
+  p, h2,footer{text-align: center;}
+  body {
+background-image: url("https://i.postimg.cc/yd3WpTbT/Dark-Background.png"); 
+background-attachment: fixed;
+background-position: center;
+background-size: 130%;
+
+  font-family: "Alata", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+footer{
+    font-size:12px;
+    color: #b40001;
+    padding:10px;
+}
+    #image {
+      max-width: 600px;
+      max-height: 400px;
+    }
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+button,input{
+      font-family: "Alata", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+    Background:#61859f;
+    width:70%;
+    border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 12px;
+  
+  text-align: center;
+
+}
+.uplaodDiv {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically (optional) */
+}
+
+.uplaodDiv img,.uplaodDiv input,.uplaodDiv button{
+  margin: 0 10px; /* Add spacing between items */
+  height: 36px;
+
+}
+.uplaodDiv input:hover,.uplaodDiv button:hover{
+  background-color: #b40001;
+  transform: scaleY(1.2);
+  
+  transition-duration: 1s;
+}
+
+
+  </style>
+</head>
+<body>
+  <img src="https://i.postimg.cc/tgqrKp8B/TwoLogo.jpg" class ="center" style="width:20%">
+  <p >Submit an image for analysis to detect the presence of violence.</p>
+  {% if image %}
+    <img class ="center" id="image" src="data:image/jpeg;base64,{{ image }}">
+  {% endif %}
+  <form class ="center" method="POST" enctype="multipart/form-data">
+  <br>
+    <div class="uplaodDiv">
+    <img src="https://img.icons8.com/?size=50&id=GG3G3mf3PNLK&format=png&color=61859f">
+    <input id="uploadImage" type="file" name="image" accept="image/*">
+    </div>
+    <br>
+    <div class="uplaodDiv">
+    <img src="https://img.icons8.com/?size=50&id=QxlCHzlPfrSe&format=png&color=61859f">
+    <button type="submit">Detect Violence</button>
+    </div>
+  </form>
+  <br>
+  {% if detections %}
+    <h2>Detected Objects</h2>
+    <ul class ="center" style="width:40%">
+      {% for detection in detections %}
+        <li>Name: {{ detection.name }} (Confidence: {{ detection.confidence }})</li><br>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+<footer>By: Sumayyah Albarakati</footer>
+</html>
