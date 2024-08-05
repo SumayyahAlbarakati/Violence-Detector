@@ -6,23 +6,16 @@ import base64
 import torch
 from urllib.request import urlretrieve
 
-# Replace with the actual URL of your model weights
-model_url = "https://github.com/SumayyahAlbarakati/Violence-Detector/blob/main/best.pt"
+# Replace with the actual path to your best.pt weights file
+model_weights = r"\models_train\best.pt"
 
-# Download the model weights
-try:
-    model_filename = "weights.pt"  # Temporary filename for download
-    urlretrieve(model_url, model_filename)
-    print(f"Model weights downloaded to: {model_filename}")
-except Exception as e:
-    print(f"Error downloading model weights: {e}")
-    exit(1)  # Or raise an exception if desired
+# Load the model using torch.hub.load with the custom configuration file
+model = YOLO(model_weights)
+# prompt: having the yolov8 best.pt file how to make flask code that take input image from user and return detected frame and it's name and confidence level
 
-# Load the model using torch.hub.load (adapt if needed)
-model = YOLO(model_filename)  # Replace YOLO with your actual model class
-print("Model loaded successfully!")
 
 app = Flask(__name__)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
