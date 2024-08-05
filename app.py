@@ -7,7 +7,7 @@ import torch
 from urllib.request import urlretrieve
 
 # Replace with the actual path to your best.pt weights file
-model_weights = r"\models_train\best.pt"
+model_weights = "best.pt"
 
 # Load the model using torch.hub.load with the custom configuration file
 model = YOLO(model_weights)
