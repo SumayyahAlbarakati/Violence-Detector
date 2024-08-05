@@ -148,7 +148,7 @@ PyOpenGL-accelerate==3.1.7
 pyOpenSSL==24.2.1
 pyparsing==3.1.2
 pyperclip==1.9.0
-pypiwin32==223
+pypiwin32==225
 PyQt5==5.15.9
 pyqt5-plugins==5.15.9.2.3
 PyQt5-Qt5==5.15.2
