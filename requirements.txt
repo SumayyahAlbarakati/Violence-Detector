@@ -4,4 +4,3 @@ ultralytics==v8  # Assuming you're using YOLOv8
 Flask
 opencv-python
 numpy
-base64
